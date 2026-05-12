@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1200">
+  <!-- Define styles -->
+  <defs>
+    <style>
+      .box { fill: #E8F4F8; stroke: #0066CC; stroke-width: 2; }
+      .box-error { fill: #FFE8E8; stroke: #CC0000; stroke-width: 2; }
+      .box-success { fill: #E8F8E8; stroke: #00AA00; stroke-width: 2; }
+      .title { font-size: 24px; font-weight: bold; fill: #000; }
+      .subtitle { font-size: 16px; fill: #333; }
+      .text { font-size: 14px; fill: #000; }
+      .text-small { font-size: 12px; fill: #666; }
+      .arrow { stroke: #0066CC; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .arrow-error { stroke: #CC0000; stroke-width: 3; fill: none; marker-end: url(#arrowhead-error); stroke-dasharray: 5,5; }
+    </style>
+    
+    <!-- Arrow markers -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#0066CC" />
+    </marker>
+    <marker id="arrowhead-error" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#CC0000" />
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="1200" fill="#FAFAFA"/>
+  
+  <!-- Title -->
+  <text x="500" y="40" class="title" text-anchor="middle">CI/CD Pipeline - Projeto Sumus</text>
+  
+  <!-- Start -->
+  <rect x="350" y="80" width="300" height="60" class="box"/>
+  <text x="500" y="110" class="text" text-anchor="middle" font-weight="bold">PUSH/PULL REQUEST</text>
+  
+  <!-- Arrow 1 -->
+  <path d="M 500 140 L 500 180" class="arrow"/>
+  
+  <!-- Stage 1: Security (Gitleaks) -->
+  <rect x="300" y="180" width="400" height="80" class="box"/>
+  <text x="500" y="205" class="subtitle" text-anchor="middle" font-weight="bold">🔐 1️⃣ SEGURANÇA - Gitleaks</text>
+  <text x="500" y="230" class="text-small" text-anchor="middle">Detecta secrets, tokens, chaves expostas</text>
+  <text x="500" y="250" class="text-small" text-anchor="middle">❌ Secrets encontrados? BLOQUEIA PR</text>
+  
+  <!-- Arrow 2 -->
+  <path d="M 500 260 L 500 300" class="arrow"/>
+  <text x="520" y="285" class="text-small" fill="#00AA00">✅ PASSOU</text>
+  
+  <!-- Stage 2: Quality (SonarCloud) -->
+  <rect x="300" y="300" width="400" height="90" class="box"/>
+  <text x="500" y="330" class="subtitle" text-anchor="middle" font-weight="bold">📊 2️⃣ QUALIDADE - SonarCloud</text>
+  <text x="500" y="355" class="text-small" text-anchor="middle">Análise estática + Cobertura de testes (>80%)</text>
+  <text x="500" y="375" class="text-small" text-anchor="middle">Bugs, Vulnerabilidades, Code Smells</text>
+  <text x="500" y="390" class="text-small" text-anchor="middle">❌ Qualidade baixa? BLOQUEIA PR</text>
+  
+  <!-- Arrow 3 -->
+  <path d="M 500 390 L 500 430" class="arrow"/>
+  <text x="520" y="415" class="text-small" fill="#00AA00">✅ PASSOU</text>
+  
+  <!-- Stage 3: Backend (Maven) -->
+  <rect x="300" y="430" width="400" height="90" class="box"/>
+  <text x="500" y="460" class="subtitle" text-anchor="middle" font-weight="bold">🔨 3️⃣ BACKEND - Maven</text>
+  <text x="500" y="485" class="text-small" text-anchor="middle">Build Java + Testes Unitários + Integração</text>
+  <text x="500" y="505" class="text-small" text-anchor="middle">Compila código + Executa testes no MongoDB</text>
+  <text x="500" y="520" class="text-small" text-anchor="middle">❌ Testes falharam? BLOQUEIA PR</text>
+  
+  <!-- Arrow 4 -->
+  <path d="M 500 520 L 500 560" class="arrow"/>
+  <text x="520" y="545" class="text-small" fill="#00AA00">✅ PASSOU</text>
+  
+  <!-- Stage 4: Docker -->
+  <rect x="300" y="560" width="400" height="90" class="box"/>
+  <text x="500" y="590" class="subtitle" text-anchor="middle" font-weight="bold">🐳 4️⃣ DOCKER - Build & Push</text>
+  <text x="500" y="615" class="text-small" text-anchor="middle">Build imagem Docker de cada serviço</text>
+  <text x="500" y="635" class="text-small" text-anchor="middle">Push para DockerHub</text>
+  <text x="500" y="650" class="text-small" text-anchor="middle">driver-service:latest, passenger-service:latest...</text>
+  
+  <!-- Arrow 5 -->
+  <path d="M 500 650 L 500 690" class="arrow"/>
+  <text x="520" y="675" class="text-small" fill="#00AA00">✅ CONSTRUÍDO</text>
+  
+  <!-- Stage 5: Deploy -->
+  <rect x="300" y="690" width="400" height="90" class="box-success"/>
+  <text x="500" y="720" class="subtitle" text-anchor="middle" font-weight="bold">🚀 5️⃣ DEPLOY - Docker Compose</text>
+  <text x="500" y="745" class="text-small" text-anchor="middle">Atualiza todos os microsserviços em produção</text>
+  <text x="500" y="765" class="text-small" text-anchor="middle">Driver Service | Passenger Service | Auth Service</text>
+  <text x="500" y="780" class="text-small" text-anchor="middle">✅ Produção atualizada!</text>
+  
+  <!-- Side info boxes -->
+  <!-- Tools -->
+  <rect x="50" y="180" width="220" height="180" fill="#F0F8FF" stroke="#6699FF" stroke-width="1"/>
+  <text x="160" y="205" class="subtitle" text-anchor="middle" font-weight="bold">Ferramentas</text>
+  <text x="65" y="230" class="text" font-weight="bold">• Gitleaks</text>
+  <text x="75" y="250" class="text-small">Detecta secrets</text>
+  <text x="65" y="275" class="text" font-weight="bold">• SonarCloud</text>
+  <text x="75" y="295" class="text-small">Qualidade código</text>
+  <text x="65" y="320" class="text" font-weight="bold">• Maven</text>
+  <text x="75" y="340" class="text-small">Build Java</text>
+  
+  <!-- Timeframe -->
+  <rect x="730" y="180" width="220" height="180" fill="#FFF8F0" stroke="#FF9966" stroke-width="1"/>
+  <text x="840" y="205" class="subtitle" text-anchor="middle" font-weight="bold">Tempo Total</text>
+  <text x="840" y="245" class="title" text-anchor="middle" fill="#FF6600">~8-10 min</text>
+  <text x="760" y="275" class="text-small">• Segurança: 30s</text>
+  <text x="760" y="295" class="text-small">• Qualidade: 2min</text>
+  <text x="760" y="315" class="text-small">• Backend: 3min</text>
+  <text x="760" y="335" class="text-small">• Docker: 2min</text>
+  <text x="760" y="355" class="text-small">• Deploy: 1min</text>
+  
+  <!-- Benefits section -->
+  <rect x="50" y="850" width="900" height="300" fill="#F8F8F8" stroke="#999" stroke-width="1" stroke-dasharray="5,5"/>
+  <text x="500" y="880" class="title" text-anchor="middle" font-weight="bold">✅ Benefícios do CI/CD</text>
+  
+  <!-- Benefit boxes -->
+  <rect x="60" y="900" width="150" height="110" fill="#E8F8E8" stroke="#00AA00" stroke-width="2" rx="5"/>
+  <text x="135" y="925" class="subtitle" text-anchor="middle">🔐 Segurança</text>
+  <text x="135" y="950" class="text-small" text-anchor="middle">Secrets nunca</text>
+  <text x="135" y="968" class="text-small" text-anchor="middle">chegam ao código</text>
+  
+  <rect x="220" y="900" width="150" height="110" fill="#E8F8E8" stroke="#00AA00" stroke-width="2" rx="5"/>
+  <text x="295" y="925" class="subtitle" text-anchor="middle">📊 Qualidade</text>
+  <text x="295" y="950" class="text-small" text-anchor="middle">Código ruim não</text>
+  <text x="295" y="968" class="text-small" text-anchor="middle">entra em prod</text>
+  
+  <rect x="380" y="900" width="150" height="110" fill="#E8F8E8" stroke="#00AA00" stroke-width="2" rx="5"/>
+  <text x="455" y="925" class="subtitle" text-anchor="middle">⚡ Velocidade</text>
+  <text x="455" y="950" class="text-small" text-anchor="middle">Deploy em menos</text>
+  <text x="455" y="968" class="text-small" text-anchor="middle">de 10 minutos</text>
+  
+  <rect x="540" y="900" width="150" height="110" fill="#E8F8E8" stroke="#00AA00" stroke-width="2" rx="5"/>
+  <text x="615" y="925" class="subtitle" text-anchor="middle">✓ Confiabilidade</text>
+  <text x="615" y="950" class="text-small" text-anchor="middle">Testes rodam</text>
+  <text x="615" y="968" class="text-small" text-anchor="middle">antes do deploy</text>
+  
+  <rect x="700" y="900" width="150" height="110" fill="#E8F8E8" stroke="#00AA00" stroke-width="2" rx="5"/>
+  <text x="775" y="925" class="subtitle" text-anchor="middle">📈 Escalabilidade</text>
+  <text x="775" y="950" class="text-small" text-anchor="middle">Deploy de múltiplos</text>
+  <text x="775" y="968" class="text-small" text-anchor="middle">microsserviços</text>
+  
+  <!-- Result -->
+  <rect x="100" y="1050" width="800" height="100" fill="#FFE8E8" stroke="#CC0000" stroke-width="3" rx="10"/>
+  <text x="500" y="1085" class="title" text-anchor="middle" fill="#CC0000">🎯 Resultado Final</text>
+  <text x="500" y="1115" class="subtitle" text-anchor="middle">Código seguro, testado e em produção</text>
+  <text x="500" y="1135" class="text" text-anchor="middle" font-style="italic">sem erros e em menos de 10 minutos!</text>
+</svg>
